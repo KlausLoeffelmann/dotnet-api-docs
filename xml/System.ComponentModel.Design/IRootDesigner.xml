@@ -65,8 +65,11 @@
 ## Remarks  
  A root designer is the designer that is in the top position, or root, of the current design-time document object hierarchy. A root designer must implement the <xref:System.ComponentModel.Design.IRootDesigner> interface. A root designer typically manages the background view in designer view mode, and usually displays the controls within the base container of the current design time project.  
   
-   
-  
+> [!NOTE]
+> If you are targeting .NET Versions 6+, you need to utilize the [Windows Designer SDK](https://github.com/microsoft/winforms-designer-extensibility) at least in [version 1.9](https://www.nuget.org/packages/Microsoft.WinForms.Designer.SDK). 
+> Keep in mind that you need to use the SDK-provided `DesignerScrollableControl` as the view base for your Root Designer to ensure the communication between the client- and server-process in the Out-Of-Process Designer scenarios.
+> Also note that you need to utilize the same custom control solution structure which would be necessary for a custom _type editor_ for the out-of-process Designer infrastrucutre, as [discussed here](https://learn.microsoft.com/dotnet/desktop/winforms/controls-design/designer-differences-framework?view=netdesktop-8.0).
+        
 ## Examples  
  The following code example demonstrates a <xref:System.ComponentModel.Design.IRootDesigner> implementation associated with a sample user control. This <xref:System.ComponentModel.Design.IRootDesigner> implementation displays a control for the background view in designer view by overriding the <xref:System.ComponentModel.Design.IRootDesigner.GetView%2A> method. You need to add a reference to the System.Design assembly to compile the example.  
   
